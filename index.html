@@ -3,215 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduTax | Educational Tax Administration Simulation</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <title>EDUTAX | Educational Tax Administration Simulation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <div id="app">
 
-    <section id="login-view">
-
+    <section class="login-page">
         <div class="login-card">
 
             <div class="login-left">
-
-                <div class="login-logo">
+                <div class="brand-area">
                     <img src="assets/logo-uny.png" alt="Logo UNY">
-                </div>
-
-                <div class="login-title">
                     <h1>Login</h1>
-                    <p>TAHAP I — MODUL ROLE AKSES</p>
+                    <p>TAHAP 1 — MODUL ROLE AKSES</p>
                 </div>
 
                 <form id="login-form">
-
-                    <div class="field">
+                    <div class="input-group">
                         <label>ID Pengguna *</label>
-                        <input 
-                            type="text"
-                            placeholder="Masukkan ID Pengguna">
+                        <input type="text" id="username" placeholder="Masukkan ID Pengguna">
                     </div>
 
-                    <div class="field">
+                    <div class="input-group">
                         <label>Kata Sandi *</label>
-
-                        <div class="password-field">
-                            <input 
-                                type="password"
-                                placeholder="Masukkan Kata Sandi">
-
-                            <button type="button">
-                                👁
-                            </button>
+                        <div class="password-box">
+                            <input type="password" id="password" placeholder="Masukkan Kata Sandi">
+                            <button type="button">👁</button>
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label>Pemilihan Bahasa</label>
-
-                        <select>
-                            <option>
-                                id-ID — Bahasa Indonesia
-                            </option>
-                        </select>
-                    </div>
-
-
-                    <div class="field">
-
-                        <label>Kode Keamanan *</label>
-
-                        <div class="captcha-row">
-
-                            <div class="captcha-box">
-                                3DNQEN
-                            </div>
-
-                            <button class="refresh">
-                                ↻
-                            </button>
-
-                            <input 
-                                type="text"
-                                placeholder="Masukkan Captcha">
-
-                        </div>
-
-                    </div>
-
-
-                    <a class="forgot">
-                        Lupa Kata Sandi?
-                    </a>
-
-
-                    <button class="login-button">
+                    <button class="login-btn">
                         Login
                     </button>
-
-
-                    <div class="register">
-
-                        <span>
-                            Pengguna Baru?
-                        </span>
-
-                        <a>
-                            Daftar di sini
-                        </a>
-
-                        <a>
-                            Permintaan akses digital
-                        </a>
-
-                    </div>
-
-
-                    <div class="demo-box">
-
-                        <b>
-                            ⓘ Akun Demo
-                        </b>
-
-                        <br>
-
-                        Seluruh mahasiswa memakai akun yang sama
-
-                        <br>
-
-                        ID Pengguna:
-                        <strong>edutax</strong>
-
-                        Kata Sandi:
-                        <strong>edutax2026</strong>
-
-                    </div>
-
                 </form>
-
             </div>
 
-
             <div class="login-right">
-
                 <div class="right-content">
-
-                    <div class="badge">
-                        Educational Tax Administration Simulation
-                    </div>
-
-
-                    <h1>
-                        EduTax
-                    </h1>
-
-
+                    <h1>EduTax</h1>
                     <h2>
                         Educational Tax<br>
                         Administration<br>
                         System
                     </h2>
-
-
-                    <div class="yellow-line"></div>
-
-
-                    <p>
-                        Simulasi pembelajaran administrasi perpajakan
-                        untuk lingkungan akademik.
-                    </p>
-
-
-                    <div class="uny-footer">
-
-                        <img src="assets/logo-uny.png">
-
-                        <span>
-                            UNIVERSITAS NEGERI<br>
-                            YOGYAKARTA
-                        </span>
-
-                    </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
-
-
-    <section id="main-view" class="hidden">
-
-        <aside id="sidebar">
-        </aside>
-
-        <main id="application-content">
-
-            <header id="topbar">
-            </header>
-
-            <div id="content-area">
-            </div>
-
-        </main>
-
-    </section>
-
 
 </div>
 
-
-<script src="app.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
