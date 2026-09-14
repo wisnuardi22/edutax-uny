@@ -1,160 +1,79 @@
-<!-- APPLICATION -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUTAX | Educational Tax Administration Simulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-<section id="app" class="app hidden">
+<body>
+<div id="app">
 
+    <section id="login-view">
+        <div class="login-container">
 
-<header class="topbar">
+            <div class="login-left">
+                <div class="login-brand">
+                    <img src="assets/logo-uny.png" alt="Logo UNY">
+                    <h1>Login</h1>
+                    <p>TAHAP 1 — MODUL ROLE AKSES</p>
+                </div>
 
+                <form id="login-form">
 
-<div class="brand">
+                    <div class="form-group">
+                        <label>ID Pengguna *</label>
+                        <input type="text" id="username" placeholder="Masukkan ID Pengguna">
+                    </div>
 
+                    <div class="form-group">
+                        <label>Kata Sandi *</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="Masukkan Kata Sandi">
+                            <button type="button" id="toggle-password">👁</button>
+                        </div>
+                    </div>
 
-<img src="assets/logo-uny.png">
+                    <button type="submit" class="login-button">
+                        Login
+                    </button>
 
+                </form>
+            </div>
 
-<div>
+            <div class="login-right">
+                <h1>EduTax</h1>
+                <h2>Educational Tax Administration System</h2>
+                <p>Simulasi pembelajaran administrasi perpajakan untuk lingkungan akademik.</p>
+            </div>
 
-<h2>
-EduTax UNY
-</h2>
+        </div>
+    </section>
 
-<span>
-Educational Tax Administration System
-</span>
+    <section id="main-view" class="hidden">
 
+        <aside id="sidebar">
+            <nav>
+                <button data-page="dashboard">Dashboard</button>
+                <button data-page="impersonating">Impersonating</button>
+                <button data-page="related">Pihak Terkait</button>
+                <button data-page="representative">Wakil / Kuasa</button>
+                <button data-page="role">Tetapkan Role</button>
+                <button data-page="permission">Permission</button>
+                <button data-page="tku">TKU</button>
+            </nav>
+        </aside>
+
+        <main id="application-content">
+            <header id="topbar"></header>
+            <section id="content-area"></section>
+        </main>
+
+    </section>
 
 </div>
 
-
-</div>
-
-
-
-
-<div class="profile">
-
-
-<div>
-Demo User
-</div>
-
-
-</div>
-
-
-</header>
-
-
-
-
-
-<div class="workspace">
-
-
-
-<aside class="sidebar">
-
-
-<ul>
-
-
-<li>
-
-<button 
-class="menu-item"
-data-page="dashboard">
-
-Dashboard
-
-</button>
-
-</li>
-
-
-
-<li>
-
-<button 
-class="menu-item"
-data-page="role">
-
-Role Akses
-
-</button>
-
-</li>
-
-
-
-
-<li>
-
-<button 
-class="menu-item"
-data-page="ebupot21">
-
-e-Bupot 21
-
-</button>
-
-</li>
-
-
-
-
-<li>
-
-<button 
-class="menu-item"
-data-page="unifikasi">
-
-e-Bupot Unifikasi
-
-</button>
-
-</li>
-
-
-
-<li>
-
-<button 
-class="menu-item"
-data-page="spt">
-
-SPT Masa Unifikasi
-
-</button>
-
-</li>
-
-
-
-</ul>
-
-
-
-</aside>
-
-
-
-
-
-
-<main class="content">
-
-
-<div id="pageContainer">
-
-
-</div>
-
-
-</main>
-
-
-
-</div>
-
-
-</section>
+<script src="app.js"></script>
+</body>
+</html>

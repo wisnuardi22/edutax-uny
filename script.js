@@ -1,974 +1,231 @@
-/* =====================================================
-   EDUTAX UNY
-   Educational Tax Administration System
-   SCRIPT VERSION TAHAP 5
-===================================================== */
+const APP_KEY = "edutax_state";
 
+const defaultState = {
+    session: {
+        authenticated: false,
+        username: "",
+        impersonating: null
+    },
 
-/* =========================
-   STORAGE CONFIG
-========================= */
-
-const STORAGE = {
-
-    session:"user_session",
-
-    role:"role_selection",
-
-    ebupot21:"ebupot21_data",
-
-    unifikasi:"ebupot_unifikasi_data",
-
-    progress:"learning_progress",
-
-    history:"activity_history"
-
+    relatedPersons: [],
+    relatedTaxpayers: [],
+    representatives: [],
+    roleAssignments: [],
+    permissions: [],
+    tku: []
 };
 
 
+let state = loadState();
 
 
-/* =========================
-   INITIALIZATION
-========================= */
+function loadState() {
+    const saved = localStorage.getItem(APP_KEY);
 
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-    checkSession();
-
-    setupMenu();
-
-});
-
-
-
-
-/* =========================
-   LOCAL STORAGE HELPER
-========================= */
-
-
-function saveData(key,data){
+    if (saved) {
+        return JSON.parse(saved);
+    }
 
     localStorage.setItem(
-        key,
-        JSON.stringify(data)
+        APP_KEY,
+        JSON.stringify(defaultState)
     );
 
+    return structuredClone(defaultState);
 }
 
 
-
-function getData(key){
-
-    return JSON.parse(
-        localStorage.getItem(key)
-    ) || [];
-
-}
-
-
-
-
-/* =========================
-   ACTIVITY HISTORY
-========================= */
-
-
-function addActivity(activity){
-
-
-    let history =
-    getData(STORAGE.history);
-
-
-
-    history.push({
-
-        activity:activity,
-
-        time:new Date()
-        .toLocaleString()
-
-    });
-
-
-
-    saveData(
-        STORAGE.history,
-        history
+function saveState() {
+    localStorage.setItem(
+        APP_KEY,
+        JSON.stringify(state)
     );
-
 }
 
 
+const app = document.getElementById("app");
 
 
 
+function render() {
 
-/* =========================
-   LOGIN
-========================= */
+    if (state.session.authenticated) {
 
+        document
+            .getElementById("login-view")
+            .classList.add("hidden");
 
-function login(){
+        document
+            .getElementById("main-view")
+            .classList.remove("hidden");
 
+        renderDashboard();
 
-let username =
-document.getElementById("username").value;
+    } else {
 
+        document
+            .getElementById("login-view")
+            .classList.remove("hidden");
 
-let password =
-document.getElementById("password").value;
+        document
+            .getElementById("main-view")
+            .classList.add("hidden");
 
-
-
-if(
-username==="edutax"
-&&
-password==="edutax2026"
-){
-
-
-let session={
-
-
-username:"edutax",
-
-name:"Mahasiswa Demo",
-
-login:true
-
-
-};
-
-
-
-saveData(
-STORAGE.session,
-session
-);
-
-
-
-addActivity(
-"Login EduTax UNY"
-);
-
-
-
-alert(
-"Selamat datang di EduTax UNY\n\nAnda menggunakan akun demo pembelajaran bersama"
-);
-
-
-
-openApplication();
-
-
+    }
 
 }
-
-else{
-
-
-alert(
-"ID Pengguna atau password salah"
-);
-
-
-}
-
-
-
-}
-
-
-
-
-
-/* =========================
-   SESSION
-========================= */
-
-
-function checkSession(){
-
-
-let session =
-localStorage.getItem(
-STORAGE.session
-);
-
-
-
-if(session){
-
-    openApplication();
-
-}
-
-
-
-}
-
-
-
-function openApplication(){
-
-
-document
-.getElementById("loginPage")
-.classList.add("hidden");
 
 
 
 document
-.getElementById("appPage")
-.classList.remove("hidden");
+    .getElementById("login-form")
+    .addEventListener(
+        "submit",
+        function(e){
 
+            e.preventDefault();
 
 
-loadPage("dashboard");
+            const username =
+                document.getElementById("username").value;
 
 
-}
+            const password =
+                document.getElementById("password").value;
 
 
+            if(
+                username === "edutax" &&
+                password === "edutax2026"
+            ){
 
+                state.session = {
+                    authenticated:true,
+                    username:"edutax",
+                    impersonating:null
+                };
 
 
+                saveState();
 
+                render();
 
-/* =========================
-   MENU
-========================= */
+            }
+            else {
 
+                alert(
+                    "ID Pengguna atau Kata Sandi salah"
+                );
 
-function setupMenu(){
+            }
 
+        }
+    );
 
-let buttons =
-document.querySelectorAll(
-".sidebar button[data-page]"
-);
 
 
 
-buttons.forEach(btn=>{
 
+// PASSWORD SHOW / HIDE
 
-btn.addEventListener(
-"click",
-function(){
+document
+    .getElementById("toggle-password")
+    .addEventListener(
+        "click",
+        function(){
 
+            const input =
+                document.getElementById("password");
 
-loadPage(
-btn.dataset.page
-);
 
+            if(input.type==="password"){
+                input.type="text";
+            }
+            else{
+                input.type="password";
+            }
 
-});
+        }
+    );
 
 
-});
 
 
-}
 
+// SIDEBAR ROUTING
 
+document
+.querySelectorAll(".sidebar-menu button[data-page]")
+.forEach(button=>{
 
+    button.addEventListener(
+        "click",
+        ()=>{
 
+            const page =
+                button.dataset.page;
 
 
-function loadPage(page){
+            router(page);
 
-
-switch(page){
-
-
-case "dashboard":
-
-dashboardPage();
-
-break;
-
-
-
-case "role":
-
-rolePage();
-
-break;
-
-
-
-case "ebupot21":
-
-ebupot21Page();
-
-break;
-
-
-
-case "unifikasi":
-
-unifikasiPage();
-
-break;
-
-
-
-case "spt":
-
-sptPage();
-
-break;
-
-
-
-case "dokumen":
-
-documentPage();
-
-break;
-
-
-
-case "progress":
-
-progressPage();
-
-break;
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-/* =========================
- DASHBOARD
-========================= */
-
-
-function dashboardPage(){
-
-
-let ebupot =
-getData(
-STORAGE.ebupot21
-);
-
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-Dashboard Pembelajaran
-</h1>
-
-
-<div class="card">
-
-
-<h3>
-Ringkasan Dokumen
-</h3>
-
-
-<br>
-
-
-<table>
-
-<tr>
-
-<th>
-Total
-</th>
-
-<th>
-Draft
-</th>
-
-<th>
-Submitted
-</th>
-
-<th>
-Selesai
-</th>
-
-</tr>
-
-
-<tr>
-
-<td>
-${ebupot.length}
-</td>
-
-
-<td>
-${ebupot.filter(x=>x.status==="Draft").length}
-</td>
-
-
-<td>
-${ebupot.filter(x=>x.status==="Submitted").length}
-</td>
-
-
-<td>
-0
-</td>
-
-
-</tr>
-
-
-</table>
-
-
-</div>
-
-
-<br>
-
-
-<div class="card">
-
-
-<h3>
-Progress Belajar
-</h3>
-
-
-<br>
-
-
-Role Akses
-
-<br>
-
-<progress value="100" max="100"></progress>
-
-
-<br><br>
-
-
-e-Bupot 21
-
-<br>
-
-<progress 
-value="${ebupot.length?50:0}"
-max="100">
-</progress>
-
-
-<br><br>
-
-
-e-Bupot Unifikasi
-
-<br>
-
-<progress value="0" max="100"></progress>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-/* =========================
- ROLE ACCESS
-========================= */
-
-
-function rolePage(){
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-Role Akses
-</h1>
-
-
-<div class="card">
-
-
-<h3>Main Account</h3>
-
-
-<p>
-ID:
-3217122601770007
-</p>
-
-
-<p>
-Nama:
-Mahasiswa UNY
-</p>
-
-
-<hr>
-
-
-<h3>
-Taxpayer Account
-</h3>
-
-
-<p>
-0012345678910000
-</p>
-
-
-<p>
-UNY Tax Laboratory
-</p>
-
-
-<button
-onclick="impersonate()"
-class="btn-login">
-
-Masuk sebagai Taxpayer
-
-</button>
-
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-function impersonate(){
-
-
-let role={
-
-
-id:"0012345678910000",
-
-name:"UNY Tax Laboratory",
-
-active:true
-
-
-};
-
-
-
-saveData(
-STORAGE.role,
-role
-);
-
-
-
-addActivity(
-"Impersonating UNY Tax Laboratory"
-);
-
-
-
-alert(
-"You are currently impersonating user:\nUNY Tax Laboratory"
-);
-
-
-
-}
-
-
-
-
-
-
-/* =========================
- E-BUPOT 21
-========================= */
-
-
-function ebupot21Page(){
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-e-Bupot 21
-</h1>
-
-
-<div class="card">
-
-
-<p>
-Mahasiswa memahami proses pembuatan bukti pemotongan PPh Pasal 21.
-</p>
-
-
-<button
-onclick="showEBupotForm()"
-class="btn-login">
-
-+ Create eBupot MP
-
-</button>
-
-
-<br><br>
-
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>
-Tax Period
-</th>
-
-<th>
-TIN
-</th>
-
-<th>
-Nama
-</th>
-
-<th>
-PPh
-</th>
-
-<th>
-Status
-</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="ebupotTable">
-
-</tbody>
-
-
-</table>
-
-
-</div>
-
-`;
-
-
-
-renderEBupot();
-
-
-
-}
-
-
-
-
-function showEBupotForm(){
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-Create e-Bupot MP
-</h1>
-
-
-<div class="form-section">
-
-
-<h3>
-General Information
-</h3>
-
-
-<div class="form-grid">
-
-
-<input id="taxPeriod"
-placeholder="Tax Period">
-
-
-<input id="tin"
-placeholder="TIN">
-
-
-<input id="empName"
-placeholder="Name">
-
-
-<input id="position"
-placeholder="Position">
-
-
-</div>
-
-</div>
-
-
-
-<div class="form-section">
-
-
-<h3>
-Income
-</h3>
-
-
-<div class="form-grid">
-
-
-<input
-id="income"
-type="number"
-placeholder="Penghasilan Bruto"
-oninput="calculateTax()">
-
-
-
-<input
-id="rate"
-readonly
-placeholder="Rate">
-
-
-<input
-id="tax"
-readonly
-placeholder="PPh Dipotong">
-
-
-</div>
-
-
-</div>
-
-
-<button
-onclick="saveDraft21('Draft')"
-class="btn-login">
-
-Save Draft
-
-</button>
-
-
-<button
-onclick="saveDraft21('Submitted')"
-class="btn-login">
-
-Submit
-
-</button>
-
-
-`;
-
-
-
-}
-
-
-
-
-function calculateTax(){
-
-
-let income =
-Number(
-document.getElementById("income").value
-)||0;
-
-
-
-let tax =
-income*1/100;
-
-
-
-document.getElementById("rate").value="1%";
-
-
-document.getElementById("tax").value=tax;
-
-
-
-}
-
-
-
-
-
-
-function saveDraft21(status){
-
-
-let data =
-getData(
-STORAGE.ebupot21
-);
-
-
-
-data.push({
-
-
-taxPeriod:
-taxPeriod.value,
-
-
-tin:
-tin.value,
-
-
-name:
-empName.value,
-
-
-income:
-income.value,
-
-
-tax:
-tax.value,
-
-
-status:status
-
+        }
+    );
 
 });
 
 
 
-saveData(
-STORAGE.ebupot21,
-data
-);
 
 
+function router(page){
 
-addActivity(
-status+" e-Bupot 21"
-);
+    switch(page){
 
-
-
-alert(
-"Data berhasil disimpan"
-);
+        case "dashboard":
+            renderDashboard();
+            break;
 
 
-
-ebupot21Page();
-
-
-
-}
+        case "impersonating":
+            renderImpersonating();
+            break;
 
 
+        case "related":
+            renderRelated();
+            break;
 
 
-function renderEBupot(){
+        case "representative":
+            renderRepresentative();
+            break;
 
 
-let table =
-document.getElementById(
-"ebupotTable"
-);
+        case "role":
+            renderRole();
+            break;
 
 
-
-if(!table)return;
-
-
-
-let data =
-getData(
-STORAGE.ebupot21
-);
+        case "permission":
+            renderPermission();
+            break;
 
 
-
-table.innerHTML="";
-
-
-
-data.forEach(x=>{
+        case "tku":
+            renderTKU();
+            break;
 
 
-table.innerHTML+=`
+        default:
+            renderDashboard();
 
-<tr>
-
-<td>${x.taxPeriod}</td>
-
-<td>${x.tin}</td>
-
-<td>${x.name}</td>
-
-<td>${x.tax}</td>
-
-<td>${x.status}</td>
-
-</tr>
-
-`;
+    }
 
 
-});
-
+    document.getElementById(
+        "breadcrumb"
+    ).innerText =
+        page.toUpperCase();
 
 }
 
@@ -976,44 +233,11 @@ table.innerHTML+=`
 
 
 
+function setContent(html){
 
-/* =========================
- UNIFIKASI
-========================= */
-
-
-function unifikasiPage(){
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-e-Bupot Unifikasi
-</h1>
-
-
-<div class="card">
-
-
-<p>
-Simulasi BPPU, PPh Pasal 23 dan PPh Pasal 4 Ayat 2.
-</p>
-
-
-<button class="btn-login">
-
-Create eBUPOT BPU
-
-</button>
-
-
-</div>
-
-`;
-
-
+    document
+        .getElementById("content-area")
+        .innerHTML = html;
 
 }
 
@@ -1021,114 +245,18 @@ Create eBUPOT BPU
 
 
 
+function emptyState(title){
 
-/* =========================
- SPT
-========================= */
+return `
 
+<div class="dashboard-card">
 
-function sptPage(){
+    <h2>${title}</h2>
 
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-SPT Masa Unifikasi
-</h1>
-
-
-<div class="card">
-
-
-<h3>
-Workflow Simulasi
-</h3>
-
-
-<p>
-1. Buat Konsep SPT
-</p>
-
-
-<p>
-2. Pilih PPh Unifikasi
-</p>
-
-
-<p>
-3. Pilih Periode Pajak
-</p>
-
-
-<p>
-4. Generate SPT
-</p>
-
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-
-
-function documentPage(){
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-Dokumen Saya
-</h1>
-
-
-<div class="card">
-
-Belum ada dokumen.
-
-</div>
-
-
-`;
-
-}
-
-
-
-
-function progressPage(){
-
-
-document.getElementById(
-"contentArea"
-).innerHTML=`
-
-<h1>
-Progress Belajar
-</h1>
-
-
-<div class="card">
-
-Role Akses : 100%
-
-<br><br>
-
-e-Bupot 21 : 50%
-
-<br><br>
-
-e-Bupot Unifikasi : 0%
+    <p>
+        Belum ada data.
+        Silakan tambahkan data secara manual.
+    </p>
 
 </div>
 
@@ -1140,168 +268,6 @@ e-Bupot Unifikasi : 0%
 
 
 
-/* =========================
- EXPORT
-========================= */
+// INITIAL LOAD
 
-
-function exportData(){
-
-
-let output={};
-
-
-
-Object.keys(localStorage)
-.forEach(key=>{
-
-
-output[key]=
-localStorage.getItem(key);
-
-
-});
-
-
-
-let blob =
-new Blob(
-
-[
-JSON.stringify(output,null,2)
-],
-
-{
-type:"application/json"
-}
-
-);
-
-
-
-let link =
-document.createElement("a");
-
-
-link.href =
-URL.createObjectURL(blob);
-
-
-link.download =
-"edutax-simulation.json";
-
-
-link.click();
-
-
-
-}
-
-
-
-
-
-/* =========================
- IMPORT
-========================= */
-
-
-function importData(event){
-
-
-let file =
-event.target.files[0];
-
-
-let reader =
-new FileReader();
-
-
-
-reader.onload=function(){
-
-
-let data =
-JSON.parse(
-reader.result
-);
-
-
-
-Object.keys(data)
-.forEach(key=>{
-
-
-localStorage.setItem(
-key,
-data[key]
-);
-
-
-});
-
-
-alert(
-"Import berhasil"
-);
-
-
-location.reload();
-
-
-};
-
-
-
-reader.readAsText(file);
-
-
-}
-
-
-
-
-
-
-/* =========================
- RESET
-========================= */
-
-
-function resetData(){
-
-
-if(confirm(
-"Hapus semua data simulasi?"
-)){
-
-
-localStorage.clear();
-
-
-location.reload();
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================
- DARK MODE
-========================= */
-
-
-function darkMode(){
-
-
-document.body.classList.toggle(
-"dark"
-);
-
-
-}
+render();
