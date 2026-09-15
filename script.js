@@ -85,18 +85,20 @@ loginForm.addEventListener("submit", function (event) {
 });
 
 function openDashboard() {
-    pageContainer.classList.add("hidden");
+    document.querySelector(".brand-header").classList.add("hidden");
+    document.querySelector(".login-card").classList.add("hidden");
     dashboard.classList.remove("hidden");
     localStorage.setItem("activeAccount", "personal");
 }
 
-accountButton.addEventListener("click", function () {
-    if (accountMenu.style.display === "block") {
-        accountMenu.style.display = "none";
-    } else {
-        accountMenu.style.display = "block";
-    }
-});
+if(accountButton){
+    accountButton.addEventListener("click", function(){
+        if(accountMenu.style.display==="block"){
+            accountMenu.style.display="none";}else{
+            accountMenu.style.display="block";
+        }
+    });
+}
 
 function selectAccount(type) {
     const impersonatingBanner = document.getElementById("impersonatingBanner");
