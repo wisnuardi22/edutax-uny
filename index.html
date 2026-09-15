@@ -1,61 +1,149 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDUTAX | Educational Tax Administration Simulation</title>
+    <title>EduTax - Universitas Negeri Yogyakarta</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div id="app">
+    <main class="page-container">
+        <header class="brand-header">
+            <img src="assets/logo-uny.png" alt="Logo Universitas Negeri Yogyakarta">
+            <div class="brand-text">
+                <h1>Edu<span>Tax</span></h1>
+                <p>UNIVERSITAS NEGERI YOGYAKARTA</p>
+            </div>
+        </header>
+        <section class="login-card">
 
-    <section class="login-page">
-        <div class="login-card">
-
-            <div class="login-left">
-                <div class="brand-area">
-                    <img src="assets/logo-uny.png" alt="Logo UNY">
-                    <h1>Login</h1>
-                    <p>TAHAP 1 — MODUL ROLE AKSES</p>
-                </div>
-
-                <form id="login-form">
-                    <div class="input-group">
-                        <label>ID Pengguna *</label>
-                        <input type="text" id="username" placeholder="Masukkan ID Pengguna">
+            <div class="login-section">
+                <h2>Login</h2>
+                <h3>TAHAP 1 — MODUL ROLE AKSES</h3>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">
+                            ID Pengguna <span>*</span>
+                        </label>
+                        <input type="text" id="username" placeholder="Masukkan ID Pengguna Anda">
                     </div>
 
-                    <div class="input-group">
-                        <label>Kata Sandi *</label>
-                        <div class="password-box">
+                    <div class="form-group">
+                        <label for="password">
+                            Kata Sandi <span>*</span>
+                        </label>
+                        <div class="password-wrapper">
                             <input type="password" id="password" placeholder="Masukkan Kata Sandi">
-                            <button type="button">👁</button>
+                            <button type="button" id="togglePassword">
+                                👁
+                            </button>
                         </div>
                     </div>
 
-                    <button class="login-btn">
+                    <div class="form-group">
+                        <label>
+                            Pemilihan Bahasa
+                        </label>
+                        <select>
+                            <option>
+                                id-ID — Bahasa Indonesia
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Kode Keamanan <span>*</span>
+                        </label>
+                        <div class="captcha-container">
+                            <div class="captcha-box" id="captchaCode">
+                                3DNQEN
+                            </div>
+                            <button type="button" class="refresh-btn" id="refreshCaptcha">
+                                ↻
+                            </button>
+                            <input type="text" id="captchaInput" placeholder="Masukkan Captcha">
+                        </div>
+                    </div>
+
+                    <a href="#" class="forgot-password">
+                        Lupa Kata Sandi?
+                    </a>
+
+                    <button type="submit" class="login-button">
                         Login
                     </button>
+
+                    <div class="additional-links">
+                        <p>
+                            Pengguna Baru?
+                            <a href="#">
+                                Daftar disini
+                            </a>
+                        </p>
+                        <a href="#">
+                            Permintaan akses digital
+                        </a>
+                    </div>
+
+                    <div class="demo-information">
+                        <strong>
+                            ⓘ Akun Demo — seluruh mahasiswa memakai akun yang sama
+                        </strong>
+                        <p>
+                            ID Pengguna:
+                            <b>edutax</b>
+                        </p>
+                        <p>
+                            Kata Sandi:
+                            <b>edutax2026</b>
+                        </p>
+                    </div>
                 </form>
             </div>
-
-            <div class="login-right">
-                <div class="right-content">
-                    <h1>EduTax</h1>
-                    <h2>
-                        Educational Tax<br>
-                        Administration<br>
-                        System
-                    </h2>
+            <div class="branding-section">
+                <div class="simulation-label">
+                    Educational Tax Administration Simulation
+                </div>
+                <h1>
+                    EduTax
+                    <br>
+                    Educational Tax
+                    <br>
+                    Administration
+                    <br>
+                    System
+                </h1>
+                <div class="yellow-line"></div>
+                <p>
+                    Simulasi pembelajaran administrasi
+                    <br>
+                    perpajakan untuk lingkungan akademik.
+                </p>
+                <div class="university-footer">
+                    <img src="assets/logo-uny.png" alt="Logo UNY">
+                    <div>
+                        <h4>
+                            UNIVERSITAS NEGERI
+                            <br>
+                            YOGYAKARTA
+                        </h4>
+                        <span>
+                            Unggul, Kreatif, Inovatif
+                        </span>
+                    </div>
                 </div>
             </div>
-
-        </div>
-    </section>
-
-</div>
-
-<script src="script.js"></script>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>

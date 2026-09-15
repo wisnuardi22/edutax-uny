@@ -5,338 +5,358 @@
     font-family: "Poppins", sans-serif;
 }
 
-:root {
-    --navy: #071b45;
-    --navy-light: #122b63;
-    --yellow: #fbbc05;
-    --blue: #1a237e;
-    --gray-bg: #eef2f7;
-    --border: #d5dce8;
-    --text: #1f2937;
-}
-
 body {
     min-height: 100vh;
-    background: var(--gray-bg);
-    color: var(--text);
-}
-
-.hidden {
-    display: none;
-}
-
-
-/* LOGIN */
-
-.login-page {
-    min-height: 100vh;
+    background: #eef3f8;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    color: #1b2b4b;
 }
+
+.page-container {
+    width: 1200px;
+    max-width: 95%;
+}
+
+
+/* =========================
+   BRAND HEADER
+========================= */
+
+.brand-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.brand-header img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.brand-text h1 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #0a3d91;
+    line-height: 1;
+}
+
+.brand-text h1 span {
+    color: #1684e8;
+}
+
+.brand-text p {
+    margin-top: 8px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #40567d;
+    font-weight: 500;
+}
+
+
+/* =========================
+   LOGIN CARD
+========================= */
 
 .login-card {
-    width: 1050px;
-    height: 720px;
+    width: 100%;
+    min-height: 720px;
+    background: #ffffff;
+    border-radius: 18px;
     display: flex;
-    background: white;
-    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 45px rgba(0, 40, 90, 0.15);
 }
 
 
-/* LEFT PANEL */
+/* =========================
+   LOGIN LEFT SECTION
+========================= */
 
-.login-left {
+.login-section {
     width: 55%;
     padding: 45px 55px;
-    background: white;
 }
 
-.brand-area img {
-    width: 85px;
-    margin-bottom: 20px;
-}
-
-.brand-area h1 {
-    font-size: 30px;
+.login-section h2 {
+    font-size: 34px;
+    color: #092d6f;
     font-weight: 700;
-    color: var(--navy);
 }
 
-.brand-area p {
-    margin-top: 6px;
-    font-size: 13px;
+.login-section h3 {
+    margin-top: 8px;
+    margin-bottom: 30px;
+    color: #703cff;
+    font-size: 14px;
     font-weight: 600;
-    color: #6b42d8;
 }
 
-.input-group {
-    margin-top: 20px;
+.form-group {
+    margin-bottom: 18px;
 }
 
-.input-group label {
+.form-group label {
     display: block;
     margin-bottom: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #344563;
-}
-
-.input-group input,
-.input-group select {
-    width: 100%;
-    height: 45px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0 14px;
+    color: #263c63;
     font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group label span {
+    color: #e53935;
+}
+
+input,
+select {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #c9d6ea;
+    border-radius: 7px;
+    padding: 0 15px;
     outline: none;
+    font-size: 14px;
+    color: #23395d;
+    background: #ffffff;
+    transition: 0.2s;
 }
 
-.input-group input:focus,
-.input-group select:focus {
-    border-color: var(--blue);
+input:focus,
+select:focus {
+    border-color: #1684e8;
+    box-shadow: 0 0 0 3px rgba(22, 132, 232, 0.12);
 }
 
 
-/* PASSWORD */
+/* =========================
+   PASSWORD
+========================= */
 
-.password-box {
+.password-wrapper {
     display: flex;
 }
 
-.password-box input {
-    border-radius: 6px 0 0 6px;
+.password-wrapper input {
+    border-radius: 7px 0 0 7px;
 }
 
-.password-box button {
-    width: 45px;
-    border: 1px solid var(--border);
-    background: white;
+.password-wrapper button {
+    width: 52px;
+    border: 1px solid #c9d6ea;
+    border-left: none;
+    background: #f5f8fc;
     cursor: pointer;
+    border-radius: 0 7px 7px 0;
 }
 
 
-/* CAPTCHA */
+/* =========================
+   CAPTCHA
+========================= */
 
 .captcha-container {
     display: flex;
     gap: 10px;
 }
 
-.captcha-code {
-    width: 120px;
-    height: 42px;
-    background: #e8edf5;
+.captcha-box {
+    width: 150px;
+    height: 45px;
+    background: #e9eff7;
+    border-radius: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
-    letter-spacing: 4px;
-    font-weight: 600;
-    color: #24324a;
+    letter-spacing: 7px;
+    font-weight: 700;
+    color: #18396b;
 }
 
-.captcha-container button {
-    width: 42px;
-    border: 1px solid var(--border);
-    background: white;
+.refresh-btn {
+    width: 45px;
+    border: none;
+    background: #0a3d91;
+    color: white;
+    border-radius: 7px;
     cursor: pointer;
-}
-
-.captcha-container input {
-    flex: 1;
+    font-size: 18px;
 }
 
 
-/* LINK */
+/* =========================
+   BUTTON
+========================= */
 
-.forgot {
+.forgot-password {
     display: block;
-    margin-top: 15px;
-    color: #006cff;
-    font-size: 13px;
+    margin: 12px 0;
+    color: #087cff;
     text-decoration: none;
+    font-size: 14px;
 }
 
-
-/* BUTTON */
-
-.login-btn {
+.login-button {
     width: 100%;
     height: 50px;
-    margin-top: 22px;
+    margin-top: 10px;
     border: none;
-    border-radius: 6px;
-    background: var(--yellow);
-    color: #18233c;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 7px;
+    background: #ffc928;
+    color: #102d62;
+    font-size: 17px;
+    font-weight: 700;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-.login-btn:hover {
-    background: #eeb900;
+.login-button:hover {
+    background: #f5ba00;
 }
 
 
-/* REGISTER */
+/* =========================
+   LINKS
+========================= */
 
-.register-area {
-    margin-top: 20px;
+.additional-links {
     text-align: center;
+    margin-top: 18px;
     font-size: 13px;
+    color: #4c5d7a;
 }
 
-.register-area a {
-    color: #006cff;
+.additional-links a {
+    color: #087cff;
     text-decoration: none;
-}
-
-.register-area a:last-child {
-    display: block;
-    margin-top: 5px;
+    font-weight: 600;
 }
 
 
-/* RIGHT PANEL */
+/* =========================
+   DEMO INFORMATION
+========================= */
 
-.login-right {
-    width: 45%;
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-    color: white;
-}
-
-.login-right::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,0.07) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.07) 1px,
-            transparent 1px
-        );
-    background-size: 45px 45px;
-}
-
-.right-content {
-    position: relative;
-    z-index: 2;
-    padding: 55px 45px;
-}
-
-.simulation-tag {
-    display: inline-block;
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: var(--yellow);
-    font-size: 12px;
-}
-
-.right-content h1 {
-    margin-top: 40px;
-    font-size: 55px;
-    font-weight: 700;
-}
-
-.right-content h2 {
-    margin-top: 5px;
-    font-size: 34px;
-    line-height: 1.15;
-    font-weight: 700;
-}
-
-.accent-line {
-    width: 120px;
-    height: 6px;
+.demo-information {
     margin-top: 25px;
-    background: var(--yellow);
+    padding: 15px;
+    background: #edf6ff;
+    border: 1px solid #8fc8ff;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #23436e;
+}
+
+.demo-information p {
+    margin-top: 5px;
+}
+
+
+/* =========================
+   RIGHT BRANDING SECTION
+========================= */
+
+.branding-section {
+    width: 45%;
+    padding: 55px 45px;
+    color: white;
+    position: relative;
+    background: 
+        linear-gradient(
+            rgba(5, 38, 100, 0.95),
+            rgba(11, 73, 150, 0.95)
+        ),
+        url("assets/background-uny.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.simulation-label {
+    display: inline-block;
+    padding: 9px 20px;
+    border-radius: 30px;
+    border: 1px solid #ffd900;
+    color: #ffd900;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.branding-section h1 {
+    margin-top: 45px;
+    font-size: 43px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.yellow-line {
+    width: 120px;
+    height: 7px;
+    background: #ffd000;
+    margin: 35px 0;
     border-radius: 10px;
 }
 
-.right-content p {
-    width: 300px;
-    margin-top: 25px;
-    font-size: 14px;
-    line-height: 1.7;
-    color: #d8e2ff;
+.branding-section p {
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 
-/* UNY BRAND */
+/* =========================
+   UNIVERSITY FOOTER
+========================= */
 
-.uny-brand {
+.university-footer {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 45px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
 }
 
-.uny-brand img {
-    width: 55px;
+.university-footer img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 }
 
-.uny-brand span {
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    color: #d8e2ff;
+.university-footer h4 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 1.6;
 }
 
-
-/* APPLICATION */
-
-#application {
-    display: flex;
-    min-height: 100vh;
-}
-
-#sidebar {
-    width: 260px;
-    background: var(--navy);
-}
-
-#application main {
-    flex: 1;
-}
-
-#topbar {
-    height: 70px;
-    background: white;
-    border-bottom: 1px solid var(--border);
-}
-
-#content {
-    padding: 30px;
+.university-footer span {
+    font-size: 13px;
+    color: #ffd900;
 }
 
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:900px) {
+@media (max-width: 900px) {
     .login-card {
-        width: 100%;
-        height: auto;
         flex-direction: column;
     }
 
-    .login-left,
-    .login-right {
+    .login-section,
+    .branding-section {
         width: 100%;
     }
 
-    .login-right {
-        min-height: 500px;
+    .branding-section {
+        min-height: 450px;
+    }
+
+    .university-footer {
+        position: static;
+        margin-top: 40px;
     }
 }
