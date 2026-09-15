@@ -360,3 +360,63 @@ select:focus {
         margin-top: 40px;
     }
 }
+
+.hidden {
+    display: none;
+}
+
+.dashboard {
+    width: 1200px;
+    min-height: 720px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 40, 90, 0.15);
+}
+
+.dashboard-header {
+    height: 75px;
+    background: #08285c;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.dashboard-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dashboard-logo img {
+    width: 45px;
+}
+
+.dashboard-logo h2 {
+    color: #ffd000;
+}
+
+.account-selector {
+    position: relative;
+}
+
+.account-selector button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.account-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 260px;
+    background: white;
+    color: #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}

@@ -143,6 +143,86 @@
                 </div>
             </div>
         </section>
+
+        <section id="dashboard" class="dashboard hidden">
+
+        <header class="dashboard-header">
+            <div class="dashboard-logo">
+                <img src="assets/logo-uny.png" alt="Logo UNY">
+                <div>
+                    <h2>EduTax</h2>
+                    <span>Universitas Negeri Yogyakarta</span>
+                </div>
+            </div>
+            <div class="account-selector">
+                <button id="accountButton">
+                    3271022601770007 RAKA ▼
+                </button>
+                <div id="accountMenu" class="account-menu">
+                    <h4>Main Account</h4>
+                    <button onclick="selectAccount('personal')">
+                        3271022601770007
+                        <br>
+                        RAKA
+                    </button>
+                    <h4>Taxpayer</h4>
+                    <button onclick="selectAccount('company')">
+                        0012345678910000
+                        <br>
+                        PT EDU TAX UNY
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div id="impersonatingBanner" class="impersonating hidden">
+            You are currently impersonating user:
+            <strong>
+                PT EDU TAX UNY
+            </strong>
+            - 0012345678910000
+        </div>
+        <div class="dashboard-body">
+            <aside class="dashboard-sidebar">
+                <img src="assets/logo-uny.png" alt="Logo UNY">
+
+                <h3 id="entityName">
+                    RAKA
+                </h3>
+                <p id="roleName">
+                    Main Account
+                </p>
+                <nav>
+                    <a>Portal Saya</a>
+                    <a>e-Bupot</a>
+                    <a>Surat Pemberitahuan</a>
+                    <a>Pembayaran</a>
+                    <a>Manajemen Akses</a>
+                </nav>
+            </aside>
+            <main class="dashboard-content">
+                <h1>
+                    Taxpayer Overview
+                </h1>
+                <div class="dashboard-card">
+                    <h3>
+                        Entitas Aktif
+                    </h3>
+                    <p id="activeEntity">
+                        RAKA
+                    </p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>
+                        Role Access
+                    </h3>
+                    <p id="activeRole">
+                        Main Account
+                    </p>
+                </div>
+            </main>
+        </div>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>
