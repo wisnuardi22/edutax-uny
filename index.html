@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +7,45 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <main class="page-container">
+
+    <section class="login-page">
+
+        <!-- HEADER BRAND -->
         <header class="brand-header">
             <img src="assets/logo-uny.png" alt="Logo Universitas Negeri Yogyakarta">
-            <div class="brand-text">
+            <div class="brand-title">
                 <h1>Edu<span>Tax</span></h1>
                 <p>UNIVERSITAS NEGERI YOGYAKARTA</p>
             </div>
         </header>
-        <section class="login-card">
 
-            <div class="login-section">
+        <!-- LOGIN CARD -->
+        <main class="login-container">
+
+            <!-- LEFT LOGIN -->
+            <section class="login-panel">
                 <h2>Login</h2>
                 <h3>TAHAP 1 — MODUL ROLE AKSES</h3>
+
                 <form id="loginForm">
+
                     <div class="form-group">
-                        <label for="username">
+                        <label>
                             ID Pengguna <span>*</span>
                         </label>
                         <input type="text" id="username" placeholder="Masukkan ID Pengguna Anda">
                     </div>
 
                     <div class="form-group">
-                        <label for="password">
+                        <label>
                             Kata Sandi <span>*</span>
                         </label>
-                        <div class="password-wrapper">
+                        <div class="password-box">
                             <input type="password" id="password" placeholder="Masukkan Kata Sandi">
                             <button type="button" id="togglePassword">
                                 👁
@@ -63,18 +68,21 @@
                         <label>
                             Kode Keamanan <span>*</span>
                         </label>
-                        <div class="captcha-container">
-                            <div class="captcha-box" id="captchaCode">
+
+                        <div class="captcha-area">
+                            <div id="captchaCode" class="captcha-code">
                                 3DNQEN
                             </div>
-                            <button type="button" class="refresh-btn" id="refreshCaptcha">
+
+                            <button type="button" id="refreshCaptcha" class="captcha-refresh">
                                 ↻
                             </button>
+
                             <input type="text" id="captchaInput" placeholder="Masukkan Captcha">
                         </div>
                     </div>
 
-                    <a href="#" class="forgot-password">
+                    <a href="#" class="forgot">
                         Lupa Kata Sandi?
                     </a>
 
@@ -82,37 +90,35 @@
                         Login
                     </button>
 
-                    <div class="additional-links">
+                    <div class="register-link">
                         <p>
                             Pengguna Baru?
-                            <a href="#">
-                                Daftar disini
-                            </a>
+                            <a href="#">Daftar disini</a>
                         </p>
-                        <a href="#">
-                            Permintaan akses digital
-                        </a>
+                        <a href="#">Permintaan akses digital</a>
                     </div>
 
-                    <div class="demo-information">
+                    <div class="demo-box">
                         <strong>
                             ⓘ Akun Demo — seluruh mahasiswa memakai akun yang sama
                         </strong>
                         <p>
-                            ID Pengguna:
-                            <b>edutax</b>
+                            ID Pengguna: <b>edutax</b>
                         </p>
                         <p>
-                            Kata Sandi:
-                            <b>edutax2026</b>
+                            Kata Sandi: <b>edutax2026</b>
                         </p>
                     </div>
+
                 </form>
-            </div>
-            <div class="branding-section">
-                <div class="simulation-label">
+            </section>
+
+            <!-- RIGHT INFORMATION PANEL -->
+            <section class="login-information">
+                <div class="simulation">
                     Educational Tax Administration Simulation
                 </div>
+
                 <h1>
                     EduTax
                     <br>
@@ -122,13 +128,16 @@
                     <br>
                     System
                 </h1>
+
                 <div class="yellow-line"></div>
+
                 <p>
                     Simulasi pembelajaran administrasi
                     <br>
                     perpajakan untuk lingkungan akademik.
                 </p>
-                <div class="university-footer">
+
+                <div class="footer-brand">
                     <img src="assets/logo-uny.png" alt="Logo UNY">
                     <div>
                         <h4>
@@ -141,89 +150,12 @@
                         </span>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="dashboard" class="dashboard hidden">
+        </main>
 
-        <header class="dashboard-header">
-            <div class="dashboard-logo">
-                <img src="assets/logo-uny.png" alt="Logo UNY">
-                <div>
-                    <h2>EduTax</h2>
-                    <span>Universitas Negeri Yogyakarta</span>
-                </div>
-            </div>
-            <div class="account-selector">
-                <button id="accountButton">
-                    3271022601770007 RAKA ▼
-                </button>
-                <div id="accountMenu" class="account-menu">
-                    <h4>Main Account</h4>
-                    <button onclick="selectAccount('personal')">
-                        3271022601770007
-                        <br>
-                        RAKA
-                    </button>
-                    <h4>Taxpayer</h4>
-                    <button onclick="selectAccount('company')">
-                        0012345678910000
-                        <br>
-                        PT EDU TAX UNY
-                    </button>
-                </div>
-            </div>
-        </header>
-        <div id="impersonatingBanner" class="impersonating hidden">
-            You are currently impersonating user:
-            <strong>
-                PT EDU TAX UNY
-            </strong>
-            - 0012345678910000
-        </div>
-        <div class="dashboard-body">
-            <aside class="dashboard-sidebar">
-                <img src="assets/logo-uny.png" alt="Logo UNY">
+    </section>
 
-                <h3 id="entityName">
-                    RAKA
-                </h3>
-                <p id="roleName">
-                    Main Account
-                </p>
-                <nav>
-                    <a>Portal Saya</a>
-                    <a>e-Bupot</a>
-                    <a>Surat Pemberitahuan</a>
-                    <a>Pembayaran</a>
-                    <a>Manajemen Akses</a>
-                </nav>
-            </aside>
-            <main class="dashboard-content">
-                <h1>
-                    Taxpayer Overview
-                </h1>
-                <div class="dashboard-card">
-                    <h3>
-                        Entitas Aktif
-                    </h3>
-                    <p id="activeEntity">
-                        RAKA
-                    </p>
-                </div>
-
-                <div class="dashboard-card">
-                    <h3>
-                        Role Access
-                    </h3>
-                    <p id="activeRole">
-                        Main Account
-                    </p>
-                </div>
-            </main>
-        </div>
-        </section>
-    </main>
     <script src="script.js"></script>
 </body>
 </html>

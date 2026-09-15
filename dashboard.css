@@ -1,0 +1,310 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f3f6fa;
+    color: #1d3557;
+}
+
+.app-container {
+    min-height: 100vh;
+}
+
+
+/* =========================
+   TOP HEADER
+========================= */
+
+.top-header {
+    height: 72px;
+    background: #08285c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.header-brand h2 {
+    color: #ffd000;
+    font-size: 24px;
+}
+
+.header-brand span {
+    font-size: 12px;
+    color: #e5edf8;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.language,
+.notification {
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.account-wrapper {
+    position: relative;
+}
+
+.account-button {
+    background: white;
+    color: #12325d;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: left;
+}
+
+
+/* =========================
+   ACCOUNT DROPDOWN
+========================= */
+
+.account-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    width: 270px;
+    background: white;
+    color: #263c63;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+    overflow: hidden;
+    z-index: 100;
+}
+
+.account-menu h4 {
+    background: #edf3fb;
+    padding: 12px 15px;
+    font-size: 13px;
+}
+
+.account-menu button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    color: #263c63;
+}
+
+.account-menu button:hover {
+    background: #eef6ff;
+}
+
+
+/* =========================
+   MAIN NAVIGATION
+========================= */
+
+.main-navigation {
+    height: 52px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+    gap: 5px;
+    border-bottom: 1px solid #d9e2ef;
+}
+
+.main-navigation a {
+    padding: 15px 18px;
+    color: #263c63;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.main-navigation a:hover {
+    background: #eef5ff;
+}
+
+.main-navigation .active {
+    color: #0a4ea3;
+    border-bottom: 3px solid #0a4ea3;
+    font-weight: 600;
+}
+
+
+/* =========================
+   IMPERSONATING
+========================= */
+
+.impersonating {
+    margin: 20px 35px;
+    padding: 15px 20px;
+    background: #fff5c9;
+    border-left: 5px solid #ffc400;
+    border-radius: 5px;
+    color: #554000;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.dashboard-content {
+    display: flex;
+    gap: 25px;
+    padding: 30px 35px;
+}
+
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profile-card {
+    width: 320px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+    padding: 25px;
+    height: fit-content;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #e4ebf5;
+    padding-bottom: 20px;
+}
+
+.profile-header img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.profile-header h2 {
+    font-size: 20px;
+    color: #08285c;
+}
+
+.profile-header p {
+    font-size: 13px;
+    color: #6b7c99;
+}
+
+.profile-information {
+    margin-top: 20px;
+}
+
+.profile-information div {
+    margin-bottom: 20px;
+}
+
+.profile-information label {
+    display: block;
+    color: #73839d;
+    font-size: 12px;
+}
+
+.profile-information p {
+    margin-top: 5px;
+    font-weight: 600;
+    color: #19365f;
+}
+
+
+/* =========================
+   OVERVIEW
+========================= */
+
+.overview-area {
+    flex: 1;
+}
+
+.overview-area h1 {
+    font-size: 26px;
+    color: #08285c;
+    margin-bottom: 25px;
+}
+
+.overview-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+}
+
+.overview-card h3 {
+    color: #08285c;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #edf1f7;
+}
+
+.data-row span {
+    color: #71819c;
+}
+
+.data-row strong {
+    color: #163963;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+    .dashboard-content {
+        flex-direction: column;
+    }
+
+    .profile-card {
+        width: 100%;
+    }
+
+    .main-navigation {
+        overflow-x: auto;
+    }
+}

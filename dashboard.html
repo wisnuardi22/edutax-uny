@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTax Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header class="top-header">
+            <div class="header-brand">
+                <img src="assets/logo-uny.png" alt="Logo UNY">
+                <div>
+                    <h2>EduTax</h2>
+                    <span>Universitas Negeri Yogyakarta</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="language">
+                    id-ID ▼
+                </button>
+
+                <button class="notification">
+                    🔔
+                </button>
+
+                <div class="account-wrapper">
+                    <button id="accountButton" class="account-button">
+                        3271022601770007
+                        <br>
+                        RAKA ▼
+                    </button>
+
+                    <div id="accountMenu" class="account-menu">
+                        <h4>Main Account</h4>
+                        <button onclick="selectAccount('personal')">
+                            3271022601770007
+                            <br>
+                            RAKA
+                        </button>
+
+                        <h4>Taxpayers</h4>
+                        <button onclick="selectAccount('company')">
+                            0012345678910000
+                            <br>
+                            PT EDU TAX UNY
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN MENU -->
+        <nav class="main-navigation">
+            <a class="active">Portal Saya</a>
+            <a>e-Faktur</a>
+            <a>e-Bupot</a>
+            <a>SPT</a>
+            <a>Pembayaran</a>
+            <a>Buku Besar</a>
+            <a>Layanan WP</a>
+            <a>Manajemen Akses</a>
+        </nav>
+
+        <!-- IMPERSONATING -->
+        <div id="impersonatingBanner" class="impersonating hidden">
+            <strong>
+                You are currently impersonating user:
+            </strong>
+            <br>
+            PT EDU TAX UNY - 0012345678910000
+        </div>
+
+        <!-- CONTENT AREA -->
+        <main class="dashboard-content">
+
+            <!-- PROFILE PANEL -->
+            <section class="profile-card">
+                <div class="profile-header">
+                    <img src="assets/logo-uny.png" alt="Logo UNY">
+                    <div>
+                        <h2 id="entityName">
+                            RAKA
+                        </h2>
+                        <p id="roleName">
+                            Main Account
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-information">
+                    <div>
+                        <label>Taxpayer ID</label>
+                        <p id="taxpayerId">
+                            3271022601770007
+                        </p>
+                    </div>
+
+                    <div>
+                        <label>Entity Type</label>
+                        <p>
+                            Orang Pribadi
+                        </p>
+                    </div>
+
+                    <div>
+                        <label>Role Access</label>
+                        <p id="activeRole">
+                            Main Account
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OVERVIEW -->
+            <section class="overview-area">
+                <h1>
+                    Taxpayer 360-Degree Overview
+                </h1>
+
+                <div class="overview-card">
+                    <h3>
+                        Informasi Umum
+                    </h3>
+                    <div class="data-row">
+                        <span>Nama Wajib Pajak</span>
+                        <strong id="activeEntity">
+                            RAKA
+                        </strong>
+                    </div>
+
+                    <div class="data-row">
+                        <span>Status Akun</span>
+                        <strong>
+                            Active
+                        </strong>
+                    </div>
+
+                    <div class="data-row">
+                        <span>Sistem</span>
+                        <strong>
+                            EduTax Simulation
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <h3>
+                        Informasi Rincian
+                    </h3>
+                    <p>
+                        Data transaksi masih kosong. Mahasiswa dapat melakukan input berdasarkan modul pembelajaran Coretax.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+</html>
