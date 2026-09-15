@@ -8,21 +8,24 @@
 body {
     min-height: 100vh;
     background: #eef3f8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #1b2b4b;
 }
 
-.page-container {
-    width: 1200px;
-    max-width: 95%;
+.hidden {
+    display: none !important;
 }
 
 
 /* =========================
-   BRAND HEADER
+   LOGIN PAGE
 ========================= */
+
+.page-container {
+    width: 1200px;
+    max-width: 95%;
+    margin: auto;
+    padding-top: 40px;
+}
 
 .brand-header {
     display: flex;
@@ -42,7 +45,6 @@ body {
     font-size: 38px;
     font-weight: 700;
     color: #0a3d91;
-    line-height: 1;
 }
 
 .brand-text h1 span {
@@ -50,32 +52,21 @@ body {
 }
 
 .brand-text p {
-    margin-top: 8px;
+    margin-top: 5px;
     font-size: 12px;
     letter-spacing: 2px;
     color: #40567d;
-    font-weight: 500;
 }
-
-
-/* =========================
-   LOGIN CARD
-========================= */
 
 .login-card {
     width: 100%;
     min-height: 720px;
-    background: #ffffff;
-    border-radius: 18px;
     display: flex;
+    background: white;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 20px 45px rgba(0, 40, 90, 0.15);
+    box-shadow: 0 20px 45px rgba(0, 40, 90, .15);
 }
-
-
-/* =========================
-   LOGIN LEFT SECTION
-========================= */
 
 .login-section {
     width: 55%;
@@ -85,7 +76,6 @@ body {
 .login-section h2 {
     font-size: 34px;
     color: #092d6f;
-    font-weight: 700;
 }
 
 .login-section h3 {
@@ -93,7 +83,6 @@ body {
     margin-bottom: 30px;
     color: #703cff;
     font-size: 14px;
-    font-weight: 600;
 }
 
 .form-group {
@@ -103,13 +92,13 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #263c63;
     font-size: 14px;
     font-weight: 600;
+    color: #263c63;
 }
 
 .form-group label span {
-    color: #e53935;
+    color: red;
 }
 
 input,
@@ -119,23 +108,8 @@ select {
     border: 1px solid #c9d6ea;
     border-radius: 7px;
     padding: 0 15px;
-    outline: none;
     font-size: 14px;
-    color: #23395d;
-    background: #ffffff;
-    transition: 0.2s;
 }
-
-input:focus,
-select:focus {
-    border-color: #1684e8;
-    box-shadow: 0 0 0 3px rgba(22, 132, 232, 0.12);
-}
-
-
-/* =========================
-   PASSWORD
-========================= */
 
 .password-wrapper {
     display: flex;
@@ -148,16 +122,9 @@ select:focus {
 .password-wrapper button {
     width: 52px;
     border: 1px solid #c9d6ea;
-    border-left: none;
     background: #f5f8fc;
     cursor: pointer;
-    border-radius: 0 7px 7px 0;
 }
-
-
-/* =========================
-   CAPTCHA
-========================= */
 
 .captcha-container {
     display: flex;
@@ -173,8 +140,7 @@ select:focus {
     justify-content: center;
     align-items: center;
     letter-spacing: 7px;
-    font-weight: 700;
-    color: #18396b;
+    font-weight: bold;
 }
 
 .refresh-btn {
@@ -184,62 +150,37 @@ select:focus {
     color: white;
     border-radius: 7px;
     cursor: pointer;
-    font-size: 18px;
 }
-
-
-/* =========================
-   BUTTON
-========================= */
 
 .forgot-password {
     display: block;
-    margin: 12px 0;
+    margin: 15px 0;
     color: #087cff;
     text-decoration: none;
-    font-size: 14px;
 }
 
 .login-button {
     width: 100%;
     height: 50px;
-    margin-top: 10px;
     border: none;
     border-radius: 7px;
     background: #ffc928;
     color: #102d62;
-    font-size: 17px;
     font-weight: 700;
+    font-size: 17px;
     cursor: pointer;
-    transition: 0.2s;
 }
-
-.login-button:hover {
-    background: #f5ba00;
-}
-
-
-/* =========================
-   LINKS
-========================= */
 
 .additional-links {
     text-align: center;
-    margin-top: 18px;
+    margin-top: 20px;
     font-size: 13px;
-    color: #4c5d7a;
 }
 
 .additional-links a {
     color: #087cff;
     text-decoration: none;
-    font-weight: 600;
 }
-
-
-/* =========================
-   DEMO INFORMATION
-========================= */
 
 .demo-information {
     margin-top: 25px;
@@ -248,16 +189,11 @@ select:focus {
     border: 1px solid #8fc8ff;
     border-radius: 8px;
     font-size: 13px;
-    color: #23436e;
-}
-
-.demo-information p {
-    margin-top: 5px;
 }
 
 
 /* =========================
-   RIGHT BRANDING SECTION
+   LOGIN RIGHT PANEL
 ========================= */
 
 .branding-section {
@@ -267,8 +203,8 @@ select:focus {
     position: relative;
     background: 
         linear-gradient(
-            rgba(5, 38, 100, 0.95),
-            rgba(11, 73, 150, 0.95)
+            rgba(5, 38, 100, .95),
+            rgba(11, 73, 150, .95)
         ),
         url("assets/background-uny.jpg");
     background-size: cover;
@@ -277,19 +213,17 @@ select:focus {
 
 .simulation-label {
     display: inline-block;
-    padding: 9px 20px;
-    border-radius: 30px;
+    padding: 8px 18px;
     border: 1px solid #ffd900;
+    border-radius: 30px;
     color: #ffd900;
     font-size: 12px;
-    font-weight: 500;
 }
 
 .branding-section h1 {
     margin-top: 45px;
     font-size: 43px;
     line-height: 1.2;
-    font-weight: 700;
 }
 
 .yellow-line {
@@ -297,22 +231,11 @@ select:focus {
     height: 7px;
     background: #ffd000;
     margin: 35px 0;
-    border-radius: 10px;
 }
-
-.branding-section p {
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-
-/* =========================
-   UNIVERSITY FOOTER
-========================= */
 
 .university-footer {
     position: absolute;
-    bottom: 50px;
+    bottom: 45px;
     left: 45px;
     display: flex;
     align-items: center;
@@ -320,26 +243,178 @@ select:focus {
 }
 
 .university-footer img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
 }
 
 .university-footer h4 {
     font-size: 15px;
     letter-spacing: 2px;
-    line-height: 1.6;
-}
-
-.university-footer span {
-    font-size: 13px;
-    color: #ffd900;
 }
 
 
 /* =========================
-   RESPONSIVE
+   DASHBOARD CORE TAX STYLE
 ========================= */
+
+.dashboard {
+    width: 100vw;
+    min-height: 100vh;
+    background: #f4f7fb;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.dashboard-header {
+    height: 75px;
+    background: #08285c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+}
+
+.dashboard-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dashboard-logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.dashboard-logo h2 {
+    color: #ffd000;
+}
+
+.dashboard-logo span {
+    font-size: 12px;
+}
+
+.account-selector {
+    position: relative;
+}
+
+.account-selector button {
+    background: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #18396b;
+}
+
+.account-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 260px;
+    background: white;
+    color: #222;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+    z-index: 20;
+}
+
+.account-menu h4 {
+    padding: 12px;
+    background: #eef3fa;
+}
+
+.account-menu button {
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+    background: white;
+}
+
+
+/* IMPERSONATING */
+
+.impersonating {
+    margin: 20px 30px;
+    padding: 15px 20px;
+    background: #fff4c7;
+    border-left: 5px solid #ffc400;
+    border-radius: 6px;
+    color: #15315c;
+}
+
+
+/* BODY */
+
+.dashboard-body {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+
+/* SIDEBAR */
+
+.dashboard-sidebar {
+    width: 260px;
+    background: #102b62;
+    color: white;
+    padding: 30px;
+}
+
+.dashboard-sidebar img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.dashboard-sidebar h3 {
+    margin-top: 15px;
+}
+
+.dashboard-sidebar nav {
+    margin-top: 30px;
+}
+
+.dashboard-sidebar nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.dashboard-sidebar nav a:hover {
+    background: #173c82;
+}
+
+
+/* CONTENT */
+
+.dashboard-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.dashboard-content h1 {
+    color: #08285c;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+}
+
+
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
     .login-card {
@@ -351,72 +426,11 @@ select:focus {
         width: 100%;
     }
 
-    .branding-section {
-        min-height: 450px;
+    .dashboard-body {
+        flex-direction: column;
     }
 
-    .university-footer {
-        position: static;
-        margin-top: 40px;
+    .dashboard-sidebar {
+        width: 100%;
     }
-}
-
-.hidden {
-    display: none;
-}
-
-.dashboard {
-    width: 1200px;
-    min-height: 720px;
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 20px 45px rgba(0, 40, 90, 0.15);
-}
-
-.dashboard-header {
-    height: 75px;
-    background: #08285c;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-}
-
-.dashboard-logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.dashboard-logo img {
-    width: 45px;
-}
-
-.dashboard-logo h2 {
-    color: #ffd000;
-}
-
-.account-selector {
-    position: relative;
-}
-
-.account-selector button {
-    border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.account-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 260px;
-    background: white;
-    color: #222;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
 }
